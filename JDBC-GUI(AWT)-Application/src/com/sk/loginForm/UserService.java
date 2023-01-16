@@ -1,4 +1,4 @@
-package com.sk.service;
+package com.sk.loginForm;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

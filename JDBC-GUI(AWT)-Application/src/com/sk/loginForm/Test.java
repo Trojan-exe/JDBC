@@ -1,6 +1,4 @@
-package com.sk.test;
-
-import com.sk.jdbc.LoginFrame;
+package com.sk.loginForm;
 
 public class Test {
 
