@@ -5,12 +5,12 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-public class EmployeeService {
+public class EmployeeWriteService {
 	Connection con = null;
 	Statement st = null;
 	ResultSet rs = null;
 	
-	public EmployeeService() {
+	public EmployeeWriteService() {
 		try {
 			Class.forName("oracle.jdbc.OracleDriver");
 			con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "system", "root");
