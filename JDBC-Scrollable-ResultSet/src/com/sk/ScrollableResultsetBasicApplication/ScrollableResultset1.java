@@ -1,4 +1,4 @@
-package ScrollableResultsetBasicApplication;
+package com.sk.ScrollableResultsetBasicApplication;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
