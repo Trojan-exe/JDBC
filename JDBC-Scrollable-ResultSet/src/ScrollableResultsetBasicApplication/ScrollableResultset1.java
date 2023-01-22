@@ -35,6 +35,35 @@ public class ScrollableResultset1 {
 				System.out.print(rs.getFloat("ESAL") + "\t");
 				System.out.print(rs.getString("EADDR") + "\n");
 			}
+			
+			System.out.println("\nScrollable ResultSet Methods:");
+			rs.afterLast();
+			rs.previous();
+			System.out.println(rs.getInt("ENO"));
+			
+			rs.beforeFirst();
+			rs.next();
+			System.out.println(rs.getInt("ENO"));
+			
+			rs.first();
+			System.out.println(rs.getInt("ENO"));
+			
+			rs.last();
+			System.out.println(rs.getInt("ENO"));
+			
+			rs.absolute(4);
+			System.out.println(rs.getInt("ENO"));
+			
+			rs.absolute(-4);
+			System.out.println(rs.getInt("ENO"));
+			
+			rs.first();
+			rs.relative(3);
+			System.out.println(rs.getInt("ENO"));
+			
+			rs.last();
+			rs.relative(-3);
+			System.out.println(rs.getInt("ENO"));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
