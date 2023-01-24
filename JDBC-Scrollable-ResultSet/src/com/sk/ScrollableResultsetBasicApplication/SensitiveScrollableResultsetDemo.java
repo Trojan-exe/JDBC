@@ -1,3 +1,7 @@
+// Type-1 driver provided by Sun Microsystems support both SCROLL_SENSITIVE and SCROLL_INSENSITIVE ResultSets.
+// Type-4 driver provided by Oracle do not support both SCROLL_SENSITIVE and SCROLL_INSENSITIVE ResultSets.
+// Type-4 driver provided by MySQL supports only SCROLL_SENSITIVE ResultSet.
+
 package com.sk.ScrollableResultsetBasicApplication;
 
 import java.sql.Connection;
