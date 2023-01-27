@@ -32,6 +32,13 @@ public class UpdatableResultSetDeleteOperation {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
+		}finally {
+			try {
+				br.close();
+				con.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
 		}
 	}
 
