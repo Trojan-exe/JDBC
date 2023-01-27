@@ -1,3 +1,5 @@
+// Prepared Statement is supported by all drivers of all database vendors.
+
 package com.sk.PreparedStatementBasicApplications;
 
 import java.io.BufferedReader;
