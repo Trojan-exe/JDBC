@@ -33,8 +33,12 @@ public class PreparedStatementInsertOperation {
 				pst.setString(2, ename);
 				pst.setFloat(3, esal);
 				pst.setString(4, eaddr);
-				pst.executeUpdate();
-				System.out.println("Employee " + eno + " Inserted Successfully");
+				int rowCount = pst.executeUpdate();
+				if(rowCount >= 1) {
+					System.out.println("Employee " + eno + " Inserted Successfully");
+				}else {
+					System.out.println("Employee not Inserted Successfully!!!");
+				}
 				
 				System.out.println("Want to add more employee ? (yes/no) : ");
 				String choice = br.readLine();
