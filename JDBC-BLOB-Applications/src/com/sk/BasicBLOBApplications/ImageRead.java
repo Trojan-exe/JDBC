@@ -1,43 +1,54 @@
 package com.sk.BasicBLOBApplications;
 
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
-public class ImageWrite {
+public class ImageRead {
 
 	public static void main(String[] args) {
-
 		Connection con = null;
 		PreparedStatement pst = null;
-		FileInputStream fis = null;
+		ResultSet rs = null;
+		FileOutputStream fos = null;
+		InputStream is = null;
 		BufferedReader br = null;
 		
 		try {
 			Class.forName("oracle.jdbc.OracleDriver");
 			con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "System", "root");
+			pst = con.prepareStatement("select * from empBlob where ENO = ?");
 			br = new BufferedReader(new InputStreamReader(System.in));
-			pst = con.prepareStatement("insert into empBlob values(?,?)");
 			
-			System.out.println("Enter Employee No : ");
+			System.out.println("Enter Employee No: ");
 			int eno = Integer.parseInt(br.readLine());
 			pst.setInt(1, eno);
+			rs = pst.executeQuery();
+			rs.next();
+			System.out.println("Employee No : " + rs.getInt(1));
 			
-			File file = new File("S:/IMAGES/Wallpapers/IMG-20191205-WA0002.jpg");
-			fis = new FileInputStream(file);
-			pst.setBinaryStream(2, fis, file.length());
-			pst.executeUpdate();
-			System.out.println("Image Stored Successfully");
+			fos = new FileOutputStream("C:/Users/DELL/Desktop/Eclipse Workspaces/DurgaSoft-jdbc-applications-workspace/JDBC-BLOB-Applications/Blob-images/trial_image1.jpg");
+			is = rs.getBinaryStream(2);
+			
+			int val = is.read();
+			while(val != -1) {
+				fos.write(val);
+				val = is.read();
+			}
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
 			try {
 				con.close();
-				fis.close();
+				fos.close();
+				rs.close();
+				is.close();
 			} catch (Exception e2) {
 				e2.printStackTrace();
 			}
