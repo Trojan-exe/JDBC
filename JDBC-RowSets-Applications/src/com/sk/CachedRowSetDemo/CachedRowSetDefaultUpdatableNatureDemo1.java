@@ -56,6 +56,14 @@ public class CachedRowSetDefaultUpdatableNatureDemo1 {
 			rowSet.acceptChanges();
 		} catch (Exception e) {
 			e.printStackTrace();
+		}finally {
+			try {
+				con.close();
+				rowSet.close();
+				br.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
 		}
 	}
 
